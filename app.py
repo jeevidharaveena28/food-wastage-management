@@ -18,8 +18,11 @@ try:
 
     st.success("Database Connected Successfully!")
 
-except Exception as e:
-    st.error(f"Connection Error: {e}")
+except Exception:
+    st.warning(
+        "This deployed version cannot access the local MySQL database. "
+        "Please run the app locally to view database data."
+    )
     st.stop()
 
 providers_count = pd.read_sql(
